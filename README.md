@@ -1,1 +1,1 @@
-# MERN_Hungryd_FoodOrdering
+# MERN_Greedly_FoodOrdering
