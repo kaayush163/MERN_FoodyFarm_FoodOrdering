@@ -3,6 +3,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #054b29;
+  background-size: cover;
+  color: white;
 }
 
 .navbar .logo {
@@ -13,7 +16,7 @@
   display: flex;
   list-style: none;
   gap: 20px;
-  color: #49557e;
+  color: #eeeff4;
   font-size: 18px;
 }
 
@@ -40,16 +43,17 @@
 }
 
 .navbar-right button:hover {
-  background: #fff4f2;
+  background: #fcf6f5;
 }
 
 .navbar .active {
   padding-bottom: 2px;
-  border-bottom: 2px solid #49557e;
+  border-bottom: 2px solid #eceef2;
 }
 
 .navbar li {
   cursor: pointer;
+  color: white;
 }
 
 .navbar-search-icon {
