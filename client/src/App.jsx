@@ -5,18 +5,22 @@ import Cart from "./pages/Cart/Cart";
 import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
 import Home from "./pages/Home/Home";
 import ExploreMenu from "./components/ExploreMenu/ExploreMenu";
+import Footer from "./components/Footer/Footer";
 const App = () => {
   return (
-    <div className="app">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/cart" element={<Cart />} />
+    <>
+      <div className="app">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
 
-        <Route path="/order" element={<PlaceOrder />} />
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </div>
+          <Route path="/order" element={<PlaceOrder />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
+      <Footer />
+    </>
   );
 };
 
