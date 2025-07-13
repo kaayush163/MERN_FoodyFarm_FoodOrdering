@@ -54,6 +54,7 @@
   height: 2px;
   margin: 20px 0px;
 }
+
 @media (max-width: 750px) {
   .footer-content {
     display: flex;
