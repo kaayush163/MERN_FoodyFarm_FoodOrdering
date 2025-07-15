@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "./LoginPopup.css";
+import { assets } from "../../assets/assets";
+
 const LoginPopup = ({ setShowLogin }) => {
   const [currState, setCurrState] = useState("Sign Up");
 
@@ -18,8 +20,8 @@ const LoginPopup = ({ setShowLogin }) => {
           {currState === "Sign Up" ? (
             <input
               name="name"
-              onChange={onChangeHandler}
-              value={data.name}
+              // onChange={onChangeHandler}
+              // value={data.name}
               type="text"
               placeholder="Your name"
               required
@@ -29,15 +31,15 @@ const LoginPopup = ({ setShowLogin }) => {
           )}
           <input
             name="email"
-            onChange={onChangeHandler}
-            value={data.email}
+            // onChange={onChangeHandler}
+            // value={data.email}
             type="email"
             placeholder="Your email"
           />
           <input
             name="password"
-            onChange={onChangeHandler}
-            value={data.password}
+            // onChange={onChangeHandler}
+            // value={data.password}
             type="password"
             placeholder="Password"
             required
