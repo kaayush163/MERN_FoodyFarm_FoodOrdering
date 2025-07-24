@@ -25,9 +25,13 @@ const Cart = () => {
                   <p>{item.price}</p>
                   <p>{cartItems[item._id]}</p>
                   <p>{item.price * cartItems[item._id]}</p>
-                  {/* total price with price into total quantity */}
-                  {/* <p>x</p> */}
-                  <p className="cart-items-remove-icon">x</p>
+                  {/* total price with price into total quantity {item.price * cartItems[item._id]} */}
+                  <p
+                    className="cart-items-remove-icon"
+                    onClick={() => removeFromCart(item._id)}
+                  >
+                    x
+                  </p>
                 </div>
                 <hr />
               </div>
