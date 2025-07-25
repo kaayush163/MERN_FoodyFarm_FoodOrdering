@@ -39,6 +39,38 @@ const Cart = () => {
           }
         })}
       </div>
+      <div className="cart-button">
+        <div className="cart-total">
+          <h2>Cart Totals</h2>
+          <div>
+            <div className="cart-total-details">
+              <p>Subtotal</p>
+              <p>
+                {currency}
+                {getTotalCartAmount()}
+              </p>
+            </div>
+            <hr />
+            <div className="cart-total-details">
+              <p>Delivery Fee</p>
+              <p>
+                {currency}
+                {getTotalCartAmount() === 0 ? 0 : deliveryCharge}
+              </p>
+            </div>
+            <hr />
+            <div className="cart-total-details">
+              <b>Total</b>
+              <b>
+                {currency}
+                {getTotalCartAmount() === 0
+                  ? 0
+                  : getTotalCartAmount() + deliveryCharge}
+              </b>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
