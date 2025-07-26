@@ -1,10 +1,12 @@
 import { createContext, useEffect, useState } from "react";
 import { food_list } from "../assets/assets";
+import { useNavigate } from "react-router-dom";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
 
+  const navigate = useNavigate();
   const addToCart = (itemId) => {
     if (!cartItems[itemId]) {
       setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
@@ -40,6 +42,7 @@ const StoreContextProvider = (props) => {
     setCartItems,
     addToCart,
     removeFromCart,
+    getTotalCartAmount,
   };
   return (
     <StoreContext.Provider value={contextValue}>
