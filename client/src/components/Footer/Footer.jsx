@@ -32,7 +32,7 @@ const Footer = () => {
           <h2>GET IN TOUCH</h2>
           <ul>
             <li>+91-212-456-7890</li>
-            <li>contact@greedhunger.com</li>
+            <li>contact@FoodyFarm.com</li>
           </ul>
         </div>
       </div>
