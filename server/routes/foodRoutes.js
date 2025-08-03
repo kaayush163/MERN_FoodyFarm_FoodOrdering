@@ -1,6 +1,6 @@
 import express from "express";
 
-import { addFood } from "../controllers/foodControllers";
+import { addFood, listFood } from "../controllers/foodControllers";
 
 import multer from "multer";
 
@@ -15,6 +15,8 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage: storage });
+
 foodRouter.post("/add", upload.single("image"), addFood);
+foodRouter.get("/list", listFood);
 
 export default foodRouter;
