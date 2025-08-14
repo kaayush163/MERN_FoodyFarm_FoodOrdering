@@ -1,6 +1,14 @@
 import React from "react";
 import "./App.css";
 const Add = () => {
+  const [image, setImage] = useState(false);
+  const [data, setData] = useState({
+    name: "",
+    description: "",
+    price: "",
+    category: "Salad",
+  });
+
   return (
     <div className="add">
       <form className="flex-col" onSubmit={onSubmitHandler}>
