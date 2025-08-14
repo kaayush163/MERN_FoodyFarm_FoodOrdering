@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 const Add = () => {
   const [image, setImage] = useState(false);
@@ -14,6 +14,10 @@ const Add = () => {
     const value = event.target.value;
     setData((data) => ({ ...data, [name]: value }));
   };
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   return (
     <div className="add">
