@@ -21,6 +21,8 @@ const List = () => {
     const response = await axios.post(`${url}/api/food/remove`, {
       id: foodId,
     });
+    //this same name id will be used at server by using req.body.id
+
     await fetchList();
     if (response.data.success) {
       toast.success(response.data.message);
