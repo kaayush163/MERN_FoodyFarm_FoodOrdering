@@ -1,6 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
+import { assets } from "../../assets/assets";
+import axios from "axios";
+import { toast } from "react-toastify";
+
 const Add = () => {
+  const url = "http://localhost:4000";
   const [image, setImage] = useState(false);
   const [data, setData] = useState({
     name: "",
@@ -15,9 +20,40 @@ const Add = () => {
     setData((data) => ({ ...data, [name]: value }));
   };
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  // useEffect for checking on every change handleer input filling how toc onsole od data showing
+  // useEffect(() => {
+  //   console.log(data);
+  // }, [data]);
+
+  const onSubmitHandler = async (event) => {
+    event.preventDefault(); //to prevent reload on submitting form
+
+    if (!image) {
+      toast.error("Image not selected");
+      return null;
+    }
+
+    const formData = new FormData();
+    formData.append("name", data.name);
+    formData.append("description", data.description);
+    formData.append("price", Number(data.price));
+    formData.append("category", data.category);
+    formData.append("image", image);
+    const response = await axios.post(`${url}/api/food/add`, formData);
+    if (response.data.success) {
+      toast.success(response.data.message);
+      // after submitting the form the data field and image will be set back to normal empty
+      setData({
+        name: "",
+        description: "",
+        price: "",
+        category: data.category,
+      });
+      setImage(false);
+    } else {
+      toast.error(response.data.message);
+    }
+  };
 
   return (
     <div className="add">
