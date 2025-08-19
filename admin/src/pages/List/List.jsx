@@ -4,10 +4,10 @@ import { currency } from "../../assets/assets";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const List = () => {
+const List = ({ url }) => {
   const [list, setList] = useState([]);
 
-  const url = "http://localhost:4000";
+  // const url = "http://localhost:4000";
   const fetchList = async () => {
     const response = await axios.get(`${url}/api/food/list`);
     if (response.data.success) {
@@ -26,6 +26,7 @@ const List = () => {
     await fetchList();
     if (response.data.success) {
       toast.success(response.data.message);
+      // this message coming from the server
     } else {
       toast.error("Error");
     }
