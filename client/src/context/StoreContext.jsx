@@ -4,9 +4,11 @@ import { useNavigate } from "react-router-dom";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
+  const url = "http://localhost:4000";
+  const [token, setToken] = useState("");
+
   const [cartItems, setCartItems] = useState({});
 
-  const navigate = useNavigate();
   const addToCart = (itemId) => {
     if (!cartItems[itemId]) {
       setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
@@ -43,6 +45,9 @@ const StoreContextProvider = (props) => {
     addToCart,
     removeFromCart,
     getTotalCartAmount,
+    url,
+    token,
+    setToken,
   };
   return (
     <StoreContext.Provider value={contextValue}>

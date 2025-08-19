@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./LoginPopup.css";
 import { assets } from "../../assets/assets";
+import { StoreContext } from "../../context/StoreContext";
 
 const LoginPopup = ({ setShowLogin }) => {
+  const { setToken, url } = useContext(StoreContext);
   const [currState, setCurrState] = useState("Sign Up");
   const [data, setData] = useState({
     name: "",
@@ -21,9 +23,30 @@ const LoginPopup = ({ setShowLogin }) => {
   //   console.log(data);
   // }, [data]);
 
+  const onLogin = async (e) => {
+    e.preventDefault(); //on submitting form the page should not reload
+
+    let new_url = url;
+    if (currState === "Login") {
+      new_url += "/api/user/login";
+    } else {
+      new_url += "/api/user/register";
+    }
+    const response = await axios.post(new_url, data);
+    // response .data.token coming from server
+    if (response.data.success) {
+      setToken(response.data.token);
+      localStorage.setItem("token", response.data.token);
+      loadCartData({ token: response.data.token });
+      setShowLogin(false); //so that login button will be hidden once logged in
+    } else {
+      toast.error(response.data.message);
+    }
+  };
+
   return (
     <div className="login-popup">
-      <form className="login-popup-container">
+      <form onSubmit={onLogin} className="login-popup-container">
         <div className="login-popup-title">
           <h2>{currState}</h2>{" "}
           <img
@@ -62,7 +85,9 @@ const LoginPopup = ({ setShowLogin }) => {
             required
           />
         </div>
-        <button>{currState === "Login" ? "Login" : "Create account"}</button>
+        <button type="submit">
+          {currState === "Login" ? "Login" : "Create account"}
+        </button>
         <div className="login-popup-condition">
           <input type="checkbox" name="" id="" required />
           <p>By continuing, i agree to the terms of use & privacy policy.</p>
