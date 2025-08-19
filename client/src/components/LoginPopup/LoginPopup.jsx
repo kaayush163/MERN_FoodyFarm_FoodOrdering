@@ -1,9 +1,25 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./LoginPopup.css";
 import { assets } from "../../assets/assets";
 
 const LoginPopup = ({ setShowLogin }) => {
   const [currState, setCurrState] = useState("Sign Up");
+  const [data, setData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const onChangeHandler = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setData((data) => ({ ...data, [name]: value }));
+  };
+
+  // when data get updated then this useEffect wiil be called to check data in console for testing correctiveness
+  // useEffect(() => {
+  //   console.log(data);
+  // }, [data]);
 
   return (
     <div className="login-popup">
@@ -16,12 +32,13 @@ const LoginPopup = ({ setShowLogin }) => {
             alt=""
           />
         </div>
+        {/* this name defined in using at onChangeHandler event.target.name and the value data.name will be used at even.target.value */}
         <div className="login-popup-inputs">
           {currState === "Sign Up" ? (
             <input
               name="name"
-              // onChange={onChangeHandler}
-              // value={data.name}
+              onChange={onChangeHandler}
+              value={data.name}
               type="text"
               placeholder="Your name"
               required
@@ -31,15 +48,15 @@ const LoginPopup = ({ setShowLogin }) => {
           )}
           <input
             name="email"
-            // onChange={onChangeHandler}
-            // value={data.email}
+            onChange={onChangeHandler}
+            value={data.email}
             type="email"
             placeholder="Your email"
           />
           <input
             name="password"
-            // onChange={onChangeHandler}
-            // value={data.password}
+            onChange={onChangeHandler}
+            value={data.password}
             type="password"
             placeholder="Password"
             required
