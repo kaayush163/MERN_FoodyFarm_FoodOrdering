@@ -1,13 +1,8 @@
 .navbar {
-  padding: 5px 0px;
+  padding: 20px 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #054b29;
-  background-size: cover;
-  color: white;
-  /* max-width: 100%; */
-  width: 100%;
 }
 
 .navbar .logo {
@@ -18,7 +13,7 @@
   display: flex;
   list-style: none;
   gap: 20px;
-  color: #eeeff4;
+  color: #49557e;
   font-size: 18px;
 }
 
@@ -33,6 +28,20 @@
   gap: 40px;
 }
 
+.navbar-search-icon {
+  position: relative;
+}
+
+.navbar-search-icon .dot {
+  position: absolute;
+  min-width: 10px;
+  min-height: 10px;
+  background-color: #ff4c24;
+  border-radius: 5px;
+  top: -8px;
+  right: -8px;
+}
+
 .navbar-right button {
   background: transparent;
   font-size: 16px;
@@ -45,34 +54,46 @@
 }
 
 .navbar-right button:hover {
-  background: #fcf6f5;
+  background: #fff4f2;
 }
 
-.navbar .active {
-  padding-bottom: 2px;
-  border-bottom: 2px solid #eceef2;
-}
-
-.navbar li {
-  cursor: pointer;
-  color: white;
-}
-
-.navbar-search-icon {
+.navbar-profile {
   position: relative;
 }
-
-.navbar-search-icon .dot {
-  /* dot to show notification that. anew message has come by red dot in phone message we see also */
+.navbar-profile-dropdown {
   position: absolute;
-  min-width: 10px;
-  min-height: 10px;
-  background-color: #ff4c24;
-  border-radius: 5px;
-  top: -8px;
-  right: -8px;
+  display: none;
+  right: 0;
+  z-index: 1;
 }
-
+.navbar-profile-dropdown li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.navbar-profile-dropdown img {
+  width: 20px;
+}
+.navbar-profile-dropdown li:hover {
+  color: #ff4c24;
+}
+.navbar-profile:hover .navbar-profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #fff2ef;
+  padding: 12px 25px;
+  border-radius: 4px;
+  border: 1px solid tomato;
+  outline: 2px solid white;
+  list-style: none;
+}
+.navbar-profile hr {
+  background-color: gray;
+  height: 1px;
+  border: none;
+}
 @media (max-width: 1050px) {
   .navbar .logo {
     width: 140px;
