@@ -42,6 +42,7 @@ const placeOrder = async (req, res) => {
       quantity: 1,
     });
 
+    //when success is true and order id is available then accordinly send data to backend if success our payment has made successfully
     const session = await stripe.checkout.sessions.create({
       success_url: `${frontend_URL}/verify?success=true&orderId=${newOrder._id}`,
       cancel_url: `${frontend_URL}/verify?success=false&orderId=${newOrder._id}`,
