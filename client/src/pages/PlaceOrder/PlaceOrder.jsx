@@ -23,18 +23,18 @@ const PlaceOrder = () => {
     setData((data) => ({ ...data, [name]: value }));
   };
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   // useEffect(() => {
-  //   if (!token) {
-  //     toast.error("to place an order sign in first");
-  //     navigate("/cart");
-  //   } else if (getTotalCartAmount() === 0) {
-  //     navigate("/cart");
-  //   }
-  // }, [token]);
+  //   console.log(data);
+  // }, [data]);
+
+  useEffect(() => {
+    if (!token) {
+      toast.error("to place an order sign in first");
+      navigate("/cart");
+    } else if (getTotalCartAmount() === 0) {
+      navigate("/cart");
+    }
+  }, [token]);
 
   const placeOrder = async (e) => {
     e.preventDefault();
