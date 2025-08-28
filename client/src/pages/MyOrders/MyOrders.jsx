@@ -45,7 +45,7 @@ const MyOrders = () => {
               <p>Rs.{order.amount}.00</p>
               <p>Items: {order.items.length}</p>
               <p>
-                {/* this span value add bullet point */}
+                {/* this &#x25cf; span value add bullet point */}
                 <span>&#x25cf;</span> <b>{order.status}</b>
               </p>
               <button onClick={fetchOrders}>Track Order</button>
